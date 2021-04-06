@@ -5,11 +5,7 @@
  - Shawn - sxlai2
 
 ## Team Meeting
-Team meeting will happen weekly, on 4pm Friday in Korean Standard Time, over Discord voice channel (KST).<br/>
-If anyone is unable to attend the meeting, one must inform the group a day before.<br/>
-During the meeting, we will mainly discuss last week's achievement, this week's target, what we will do to achieve the target.<br/>
-Notes will be taken during the meeting, where we will take turns in taking notes that are committed to our github repository, starting with soonhah2.<br/>
-
+Team meeting will happen weekly, on 4pm Friday in Korean Standard Time, over Discord voice channel (KST). If anyone is unable to attend the meeting, one must inform the group a day before. During the meeting, we will mainly discuss last week's achievement, this week's target, what we will do to achieve the target. Notes will be taken during the meeting, where we will take turns in taking notes that are committed to our github repository, starting with soonhah2.
 ## Assistance
 In talking to, and helping one another, our group will use discord as a channel of communication. <br/>
 In case of emergency, or if we are unable to reach a member over discord, we will email the missing member asking for the situation, which must be replied in 24 hours. <br/>
@@ -30,11 +26,13 @@ Team will respect the circumstances that certain weeks are more busy than the ot
 3. Every week on Friday 4pm, there will be a weekly meeting <br/>
 </t>During weekly meeting, we will discuss the goal of individual members and distribute the work accordingly <br/>
 
-During the team meeting, we 
+During the team meeting, we will allocate the target according to the member's schedule.
 
 ## Time commitment
-Each member of the team will commit about 4 hours per week, every week, until we finish the project. <br/>
-Each member's accomplishment will be discussed during the meeting.
+We all promise each member of the team will commit about 4 hours per week, every week, until we finish the project. <br/>
+Each member's accomplishment will be discussed during the meeting. <br/>
+If a member finishes the weekly target early, one is not obliged to, but encouraged to help the other members to finish the team project faster. <br>
+
 
 ## Conflict Resolution
 We will do our best not to make a conflict, but if there is a conflict between the groups, members not involved in the conflict will do the best in resolving the conflict.
