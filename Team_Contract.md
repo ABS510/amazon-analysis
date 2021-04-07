@@ -40,3 +40,4 @@ If there is a conflict between ideas, the remaining member will vote on who's id
 # Signatures
 
 Soonha Hwang (soonhah2)
+Lai Shu Xian (sxlai2)
