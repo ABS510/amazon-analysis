@@ -25,14 +25,14 @@ The graph traversal that we need to implement should be IDDFS because we take th
 By using IDDFS, we can set the limit on how much co-purchasing can possibly happen, possibly generating various interesting outcomes based on the set limits.
 Simply put, by using IDDFS we will calculate the number of unique nodes a certain node can traverse on. 
 The number of nodes that can traverse on will be the co-purchase index of the product, which determines the extent of influence of the certain product.
-We will hence rank the top_n nodes with the most number of co-purchase index. These top-N nodes will be implied as "Most Influencial Product" listed in Amazon.
+We will hence rank the top_N nodes with the highest co-purchase index. These top-N nodes will be implied as "Most Influencial Product" listed in Amazon.
 
 ## Graph Algorithm
 
 |Purpose          |Algorithm|Explaination|
 |:---------------|---------|------------|
-|Deciding　　　　 which products to promote on| Tarjan's Algorithm |If the products(nodes) are strongly connected, it will be beneficial for Amazon to promote on such products rather than other individual nodes. That being said, we will use Tarjan's algorithm, we will find all strongly connected components to determine which items should be offering promotions. Also, because the size of the strongly connected components can be very large, we will come up with a certain threshold that caps the maximum size of the conencted nodes|
-|Finding Potentially Powerful Product| Dijsktra's Algorithm | We will use Dijsktra's Algorithm to find the shortest path between 2 nodes, first node being one of the top-N hightest co-purchase indicies we've determined using IDDFS (_A_), and the second node being one of the rest of the nodes (_B_). Based on how short the path of node is from _A_ to _B_, we can determine which products have the most potential.|
+|Deciding　　　　 which products to promote on| Tarjan's Algorithm |If the products(nodes) are strongly connected, it will be beneficial for Amazon to promote such products rather than other individual nodes. That being said, we will use Tarjan's Algorithm to find all strongly connected components to determine which items should be offering promotions. Also, because the size of the strongly connected components can be very large, we will come up with a certain threshold that caps the maximum size of the conencted nodes|
+|Finding Potentially Powerful Product| Dijsktra's Algorithm | We will use Dijsktra's Algorithm to find the shortest path between 2 nodes, the first node being one of the top-N hightest co-purchase indices we've determined using IDDFS (_A_), and the second node being one of the remaining nodes (_B_). Based on how short the path of node is from _A_ to _B_, we can determine which products have the most potential.|
 
 ## Timeline
 
