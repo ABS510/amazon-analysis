@@ -31,9 +31,60 @@ TEST_CASE("Checking Node Creation 1"){
 }
 
 TEST_CASE("Checking Node Creation 2"){
+    Forest forest = Forest();
+    vector<Forest::Node*> nodes;
 
-    Forest::Node* createNode = new Forest::Node();
-    forest.set_itemsMap(1, createNode);
+    for(long i = 0; i<5; i++){
+        Forest::Node* createNode = new Forest::Node(i);
+        nodes.push_back(createNode);
+        forest.set_itemsMap(i, createNode);
+    }
 
-    REQUIRE(createNode == forest.get_itemsMap()[1]);
+    REQUIRE(nodes[0] == forest.get_itemsMap()[0]);
+    REQUIRE(nodes[4] == forest.get_itemsMap()[4]);
+    REQUIRE(nodes[1] == forest.get_itemsMap()[1]);
+    REQUIRE(nodes[3] == forest.get_itemsMap()[3]);
+    REQUIRE(nodes[2] == forest.get_itemsMap()[2]);
+
+    REQUIRE(5 == forest.get_itemsMap().size());
+}
+
+TEST_CASE("Checking readFromFile 1"){
+    Forest forest = Forest();
+    forest.readFromFile("tests/sample_verysmall.txt");
+
+    REQUIRE(8 == forest.get_itemsMap().size());
+}
+
+TEST_CASE("Checking readFromFile 2"){
+
+}
+TEST_CASE("Checking Node Creation 2"){
+    Forest forest = Forest();
+    vector<Forest::Node*> nodes;
+
+    for(long i = 0; i<5; i++){
+        Forest::Node* createNode = new Forest::Node(i);
+        nodes.push_back(createNode);
+        forest.set_itemsMap(i, createNode);
+    }
+
+    REQUIRE(nodes[0] == forest.get_itemsMap()[0]);
+    REQUIRE(nodes[4] == forest.get_itemsMap()[4]);
+    REQUIRE(nodes[1] == forest.get_itemsMap()[1]);
+    REQUIRE(nodes[3] == forest.get_itemsMap()[3]);
+    REQUIRE(nodes[2] == forest.get_itemsMap()[2]);
+
+    REQUIRE(5 == forest.get_itemsMap().size());
+}
+
+TEST_CASE("Checking readFromFile 1"){
+    Forest forest = Forest();
+    forest.readFromFile("tests/sample_verysmall.txt");
+
+    REQUIRE(8 == forest.get_itemsMap().size());
+}
+
+TEST_CASE("Checking readFromFile 2"){
+    
 }

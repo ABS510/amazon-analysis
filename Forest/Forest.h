@@ -21,9 +21,9 @@ class Forest{
 
         Forest();
         Forest(int copLimit);
-        // void readFromFile(string file);
-        // void filter(int size);
-        // int IDDFS(Node* start, int limit, int& checker);
+        void readFromFile(string file);
+        void filter(size_t size);
+        int IDDFS(Node* start, int limit);
         
         int get_copLimit();
         void set_itemsMap(long idx, Node* node);
@@ -31,6 +31,6 @@ class Forest{
 
     private:
         unordered_map<long, Node*> _itemsMap;
-        // vector<long> _top500;   //this is to store the itemId of the 500 most optimum products to be cut down to
+        vector<long> _top500;   //this is to store the itemId of the 500 most optimum products to be cut down to
         int _copLimit;          //this should by default be 0, this is the limit we set for IDDFS
 };
