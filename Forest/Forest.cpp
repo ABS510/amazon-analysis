@@ -99,14 +99,22 @@ int Forest::IDDFS(Node* start, int limit){
     int count = 0;
     if(limit == 1){
         count = start->_connected.size();
-        //start->_copIndex = count;
         return count;
     }
+    if(limit == 0){
+        return 0;
+    }
     
+    count += start->_connected.size();          //for every node we visit, we need to add its branching factor
     for(unsigned long i = 0; i<start->_connected.size(); i++){
-            Node* n = start->_connected[i];
-            count = count + IDDFS(n, limit-1);
+        count = count + IDDFS(start->_connected[i], limit-1);   //perform IDDFS on each immediately neighboring node
+        for(unsigned long j=0; j<start->_connected[i]->_connected.size(); j++){
+            if(start->_connected[i]->_connected[j] == start){
+                count --;   //for each children of the immediately neighboring node, if any of those children linked back to the node we are on
+                            //count minus one
+            }
         }
+    }
     return count;
 }
 
