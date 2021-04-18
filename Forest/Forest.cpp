@@ -56,37 +56,35 @@ void Forest::readFromFile(string file){
     }
 }
 
-// void Forest::filter(size_t size){
-//     //I am thinking IDDFS will be called here
-    
-//     for(auto &iter : _itemsMap){
-//         long index = iter.first;
-//         Node* node = iter.second;
-//         node->_copIndex = IDDFS(node, _copLimit);
-//     }
+void Forest::filter(size_t size){
+    for(auto &iter : _itemsMap){
+        long index = iter.first;
+        Node* node = iter.second;
+        node->_copIndex = IDDFS(node, _copLimit);
+    }
 
-//     std::vector<std::pair<long, long>> rank;
+    std::vector<std::pair<long, long>> rank;
 
-//     for(auto &iter : _itemsMap){
-//         long index = iter.first;                        //save the itemID in index
-//         long copIndex = iter.second->_copIndex;         //save copIndex here
+    for(auto &iter : _itemsMap){
+        long index = iter.first;                        //save the itemID in index
+        long copIndex = iter.second->_copIndex;         //save copIndex here
 
-//         if(rank.size()<size) 
-//             rank.push_back(std::make_pair(copIndex, index)); //if vector is less than desired size, just push back
-//         else{
-//             sort(rank.rbegin(), rank.rend()); //sort to check if the node we are pushing is greater than min.
+        if(rank.size()<size) 
+            rank.push_back(std::make_pair(copIndex, index)); //if vector is less than desired size, just push back
+        else{
+            sort(rank.rbegin(), rank.rend()); //sort to check if the node we are pushing is greater than min.
 
-//             if(copIndex > rank[0].first){   //if so, pop back and replace
-//                 rank.pop_back();
-//                 rank.push_back(std::make_pair(copIndex, index));
-//             }
-//         }
-//     }
+            if(copIndex > rank[0].first){   //if so, pop back and replace
+                rank.pop_back();
+                rank.push_back(std::make_pair(copIndex, index));
+            }
+        }
+    }
 
-//     for(auto &iter : rank){
-//         _top500.push_back(iter.second); //push in the rank of the index. Now, _top500 will store the items with highest copIndex
-//     }
-// }
+    for(auto &iter : rank){
+        _top500.push_back(iter.second); //push in the rank of the index. Now, _top500 will store the items with highest copIndex
+    }
+}
 
 /*
 Perform IDDFS starting from the <start> node with the given <limit> and count the number of distinct nodes that are linked to <start>
@@ -118,16 +116,6 @@ int Forest::IDDFS(Node* start, int limit, unordered_map<Node*, bool> & bookkeep)
         }
         bookkeep[start->_connected[i]] = 1;
         count = count + IDDFS(start->_connected[i], limit-1, bookkeep);   //perform IDDFS on each immediately neighboring node
-        /*for(unsigned long j=0; j<start->_connected[i]->_connected.size(); j++){
-            if(start->_connected[i]->_connected[j] == start){
-                count --;   //for each children of the immediately neighboring node, if any of those children linked back to the node we are on
-                            //count minus one
-            }
-            if(bookkeep[start->_connected[i]->_connected[j]]){
-                count --;
-            }
-
-        }*/
     }
     return count;
 }
