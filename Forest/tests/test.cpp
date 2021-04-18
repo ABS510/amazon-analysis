@@ -4,7 +4,7 @@
 
 #include <iostream>
 // #include <vector>
-// #include <unordered_map>
+#include <unordered_map>
 // #include <fstream>
 // #include <string>
 
@@ -52,39 +52,40 @@ TEST_CASE("Checking Node Creation 2"){
 TEST_CASE("Checking readFromFile 1"){
     Forest forest = Forest();
     forest.readFromFile("tests/sample_verysmall.txt");
-
+    REQUIRE(3 == forest.get_itemsMap()[1]->_connected.size());
+    REQUIRE(3 == forest.get_itemsMap()[2]->_connected.size());
+    REQUIRE(2 == forest.get_itemsMap()[3]->_connected.size());
     REQUIRE(8 == forest.get_itemsMap().size());
 }
 
-TEST_CASE("Checking readFromFile 2"){
+// TEST_CASE("Checking readFromFile 2"){
+    
+// }
 
-}
-TEST_CASE("Checking Node Creation 2"){
-    Forest forest = Forest();
-    vector<Forest::Node*> nodes;
-
-    for(long i = 0; i<5; i++){
-        Forest::Node* createNode = new Forest::Node(i);
-        nodes.push_back(createNode);
-        forest.set_itemsMap(i, createNode);
-    }
-
-    REQUIRE(nodes[0] == forest.get_itemsMap()[0]);
-    REQUIRE(nodes[4] == forest.get_itemsMap()[4]);
-    REQUIRE(nodes[1] == forest.get_itemsMap()[1]);
-    REQUIRE(nodes[3] == forest.get_itemsMap()[3]);
-    REQUIRE(nodes[2] == forest.get_itemsMap()[2]);
-
-    REQUIRE(5 == forest.get_itemsMap().size());
-}
-
-TEST_CASE("Checking readFromFile 1"){
+TEST_CASE("Checking IDDFS Limit 1"){
     Forest forest = Forest();
     forest.readFromFile("tests/sample_verysmall.txt");
 
-    REQUIRE(8 == forest.get_itemsMap().size());
+    unordered_map<Forest::Node*, bool> bookkeep;
+
+    // std::cout<<forest.IDDFS(forest.get_itemsMap()[0], 3);
+    REQUIRE(3 == forest.IDDFS(forest.get_itemsMap()[1], 1, bookkeep));
+    REQUIRE(3 == forest.IDDFS(forest.get_itemsMap()[2], 1, bookkeep));
+    REQUIRE(2 == forest.IDDFS(forest.get_itemsMap()[3], 1, bookkeep));
+    // REQUIRE(3 == forest.IDDFS(forest.get_itemsMap()[1], 1));
+    // REQUIRE(3 == forest.IDDFS(forest.get_itemsMap()[2], 1));
+    // REQUIRE(2 == forest.IDDFS(forest.get_itemsMap()[3], 1));
 }
 
-TEST_CASE("Checking readFromFile 2"){
-    
+TEST_CASE("Checking IDDFS Limit 2"){
+    Forest forest = Forest();
+    forest.readFromFile("tests/sample_verysmall.txt");
+    unordered_map<Forest::Node*, bool> bookkeep;
+    unordered_map<Forest::Node*, bool> bookkeep1;
+    unordered_map<Forest::Node*, bool> bookkeep2;
+
+    // std::cout<<forest.IDDFS(forest.get_itemsMap()[0], 3);
+    REQUIRE(5 == forest.IDDFS(forest.get_itemsMap()[1], 2, bookkeep));
+    REQUIRE(5 == forest.IDDFS(forest.get_itemsMap()[3], 2, bookkeep2));
+    REQUIRE(5 == forest.IDDFS(forest.get_itemsMap()[2], 2, bookkeep1));
 }
