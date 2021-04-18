@@ -1,28 +1,34 @@
-#pragma once
 #include "Forest.h"
+
+#include <iostream>
 #include <unordered_map>
 #include <vector>
 #include <algorithm>
-
-// Node* Forest::Node::makeNode(long itemId){
-//     Node* newnode = new Node;
-//     newnode->_itemId = itemId;
-//     newnode->_copIndex = 0;
-// }
+#include <fstream>
+#include <string>
 
 
-Forest::Node(long itemID){
-    newnode->_itemId = itemId;
-    newnode->_copIndex = 0;
+Forest::Forest(){
+    _copLimit = 0;
 }
 
-Forest::Node(){}
+Forest::Forest(int copLimit){
+    _copLimit = copLimit;
+}
+
 
 /*
 Set the limit for co-purchasing, this is the limit used for IDDFS
 */
-void Forest::setCopLimit(long limit){
-    _copLimit = limit;
+
+Forest::Node::Node(){
+    Node::_itemId = -1;
+    Node::_copIndex = -1;
+}
+
+Forest::Node::Node(long itemId){
+    Node::_itemId = itemId;
+    Node::_copIndex = 0;
 }
 
 
@@ -30,35 +36,27 @@ void Forest::setCopLimit(long limit){
 Function below takes in the .txt file and create the forest of all items by
 mapping each itemId to their pointer in the forest
 */
+
+
+
+
 void Forest::readFromFile(string file){
-    ifstream myfile(file);
-    long a, b;
-    Node* createNode;
-    while(!myfile.eof()){
-        fin >> a;           //item id of left column
-        fin >> b;           //item id of right column
-        
-        if(_itemsMap[a]){   //we previously already created this node in the forest
-            if(!_itemsMap[b]){
-                createNode = new Forest::Node(b);
-                _itemsMap[b] = createNode;
-            }
-            map[a]->_connected.push_back(_itemsMap[b]);
-            
-        }else{              //this is our first time seeing this itemId
-            createNode = new Forest::Node(a);
+    std::ifstream myfile(file);
+    int a, b;
+    while(myfile >> a >> b){
+        if(_itemsMap.find(a) == _itemsMap.end()){
+            Node* createNode = new Forest::Node(a);
             _itemsMap[a] = createNode;
-            if(!_itemsMap[b]){
-                createNode = new Forest::Node(b);
-                _itemsMap[b] = createNode;
-            }
-            map[a]->_connected.push_back(_itemsMap[b]);
         }
-        
+        if(_itemsMap.find(b) == _itemsMap.end()){
+            Node* createNode = new Forest::Node(b);
+            _itemsMap[b] = createNode;
+        }
+        _itemsMap[a]->_connected.push_back(_itemsMap[b]);
     }
 }
 
-void Forest::filter(int size){
+void Forest::filter(size_t size){
     //I am thinking IDDFS will be called here
     
     for(auto &iter : _itemsMap){
@@ -73,12 +71,13 @@ void Forest::filter(int size){
         long index = iter.first;                        //save the itemID in index
         long copIndex = iter.second->_copIndex;         //save copIndex here
 
-        if(rank.size()<size) rank.push_back(std::make_pair(copIndex, index)); //if vector is less than desired size, just push back
+        if(rank.size()<size) 
+            rank.push_back(std::make_pair(copIndex, index)); //if vector is less than desired size, just push back
         else{
             sort(rank.rbegin(), rank.rend()); //sort to check if the node we are pushing is greater than min.
 
             if(copIndex > rank[0].first){   //if so, pop back and replace
-                rank.pop_back());
+                rank.pop_back();
                 rank.push_back(std::make_pair(copIndex, index));
             }
         }
@@ -118,3 +117,16 @@ int Forest::IDDFS(Node* start, int limit){
     return count;
 }
 
+
+
+int Forest::get_copLimit(){
+    return _copLimit;
+};
+
+void Forest::set_itemsMap(long idx, Forest::Node* node){
+    _itemsMap[idx] = node;
+}
+
+unordered_map<long, Forest::Node*> Forest::get_itemsMap(){
+    return _itemsMap;
+}
