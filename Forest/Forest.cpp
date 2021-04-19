@@ -66,23 +66,34 @@ void Forest::filter(size_t size){
     std::vector<std::pair<long, long>> rank;
 
     for(auto &iter : _itemsMap){
+
         long index = iter.first;                        //save the itemID in index
         long copIndex = iter.second->_copIndex;         //save copIndex here
 
-        if(rank.size()<size) 
+        std::cout<<"Index : "<<index<<" COPIndex : "<<copIndex<<std::endl;
+
+
+        if(rank.size()<size) {
             rank.push_back(std::make_pair(copIndex, index)); //if vector is less than desired size, just push back
+            }
         else{
             sort(rank.rbegin(), rank.rend()); //sort to check if the node we are pushing is greater than min.
-
-            if(copIndex > rank[0].first){   //if so, pop back and replace
+            
+            if(copIndex > rank[size-1].first){   //if so, pop back and replace
                 rank.pop_back();
                 rank.push_back(std::make_pair(copIndex, index));
             }
+
+            for(size_t i = 0; i<size; i++){
+                std::cout<<rank[i].second;
+            }
+            std::cout<<std::endl;
         }
     }
+    sort(rank.rbegin(), rank.rend()); 
 
     for(auto &iter : rank){
-        _top500.push_back(iter.second); //push in the rank of the index. Now, _top500 will store the items with highest copIndex
+        _topProduct.push_back(iter.second); //push in the rank of the index. Now, _top500 will store the items with highest copIndex
     }
 }
 
@@ -92,59 +103,35 @@ Set the count of distinct linked nodes within the Node class's <_copIndex>
 Return count
 Is it possible(easier) to implement using recursion? 
 */
-int Forest::IDDFS(Node* start, int limit, unordered_map<Node*, bool> & bookkeep){
+int Forest::IDDFS(Node* start, int limit){
+    unordered_map<Forest::Node*, bool> visited;
+    return IDDFS_helper(start, start, limit, visited);
+}
+
+int Forest::IDDFS_helper(Node* start, Node* cur, int limit, unordered_map<Node*, bool>& bookkeep){
     int count = 0;
+
     if(limit == 1){
-        bookkeep[start] = 1;
-        count = start->_connected.size();
-        for(unsigned long i = 0; i<start->_connected.size(); i++){
-            if(bookkeep[start->_connected[i]]){
-                count--;
-            }
-            bookkeep[start->_connected[i]] = 1;
+        bookkeep[cur] = 1;
+        count = cur->_connected.size();
+        for(unsigned long i = 0; i<cur->_connected.size(); i++){
+            if(bookkeep[cur->_connected[i]]) count--;
+            bookkeep[cur->_connected[i]] = 1;
         }
         return count;
     }
-    if(limit == 0){
-        return 0;
-    }
-    bookkeep[start] = 1;
-    count += start->_connected.size();          //for every node we visit, we need to add its branching factor
-    for(unsigned long i = 0; i<start->_connected.size(); i++){
-        if(bookkeep[start->_connected[i]]){
-            count--;
-        }
-        bookkeep[start->_connected[i]] = 1;
-        count = count + IDDFS(start->_connected[i], limit-1, bookkeep);   //perform IDDFS on each immediately neighboring node
+    
+    if(limit == 0) return 0;
+
+    bookkeep[cur] = 1;
+    count += cur->_connected.size();          //for every node we visit, we need to add its branching factor
+    for(unsigned long i = 0; i<cur->_connected.size(); i++){
+        if(bookkeep[cur->_connected[i]]) count--;
+        bookkeep[cur->_connected[i]] = 1;
+        count = count + IDDFS_helper(start, cur->_connected[i], limit-1, bookkeep);   //perform IDDFS on each immediately neighboring node
     }
     return count;
 }
-
-
-// int Forest::IDDFS(Node* start, int limit, unordered_map<Node*, bool> &bookkeep){
-//     int count = 0;
-//     if(limit == 1){
-//         count = start->_connected.size();
-//         for(unsigned long i = 0; i<start->_connected.size(); i++){
-//             if(bookkeep[start->_connected[i]]){
-//                 count--;
-//             }
-//         }
-//         return count;
-//     }
-//     // if(limit == 0) return 0;
-
-//     bookkeep[start] = true;
-    
-//     std::cout<<start->_itemId<<std::endl;
-//     for(size_t i = 0; i<start->_connected.size(); i++){
-//         if(bookkeep[start->_connected[i]] == true) continue;
-//         count = count + IDDFS(start->_connected[i], limit-1, bookkeep);
-//         std::cout<<count<<std::endl;
-//     }
-//     return count;
-// }
-
 
 
 int Forest::get_copLimit(){
@@ -157,4 +144,8 @@ void Forest::set_itemsMap(long idx, Forest::Node* node){
 
 unordered_map<long, Forest::Node*> Forest::get_itemsMap(){
     return _itemsMap;
+}
+
+std::vector<long> Forest::get_topProduct(){
+    return _topProduct;
 }
