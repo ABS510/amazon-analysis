@@ -70,7 +70,7 @@ void Forest::filter(size_t size){
         long index = iter.first;                        //save the itemID in index
         long copIndex = iter.second->_copIndex;         //save copIndex here
 
-        std::cout<<"Index : "<<index<<" COPIndex : "<<copIndex<<std::endl;
+        std::cout<<"Checking Index : "<<index<<" with COPIndex of : "<<copIndex<<std::endl;
 
 
         if(rank.size()<size) {
@@ -83,9 +83,9 @@ void Forest::filter(size_t size){
                 rank.pop_back();
                 rank.push_back(std::make_pair(copIndex, index));
             }
-
+            std::cout<<"Current Rank:";
             for(size_t i = 0; i<size; i++){
-                std::cout<<rank[i].second;
+                std::cout<<rank[i].second<<" ";
             }
             std::cout<<std::endl;
         }

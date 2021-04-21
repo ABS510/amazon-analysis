@@ -1,6 +1,5 @@
-EXE = Forest
+EXE = main
 TEST = test
-
 
 EXE_OBJ = main.o
 OBJS = Forest.o main.o
