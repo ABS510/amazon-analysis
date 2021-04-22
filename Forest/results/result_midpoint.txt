@@ -1,0 +1,10 @@
+Product Rank 1) 258046	with COP Index : 688
+Product Rank 2) 211890	with COP Index : 682
+Product Rank 3) 143958	with COP Index : 679
+Product Rank 4) 400802	with COP Index : 663
+Product Rank 5) 96637	with COP Index : 657
+Product Rank 6) 240301	with COP Index : 656
+Product Rank 7) 83744	with COP Index : 656
+Product Rank 8) 360795	with COP Index : 654
+Product Rank 9) 61859	with COP Index : 651
+Product Rank 10) 120492	with COP Index : 649
