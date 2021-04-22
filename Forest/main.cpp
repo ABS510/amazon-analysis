@@ -5,7 +5,7 @@
 
 int main(){
     int limit;
-    limit = 3;
+    limit = 2;
     Forest forest = Forest(limit);
 
     std::cout<<"Class Created!"<<std::endl;
