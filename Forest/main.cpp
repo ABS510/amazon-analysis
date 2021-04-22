@@ -24,6 +24,15 @@ int main(){
     
     int cnt = 0;
     for(auto itr : top_product){
-        std::cout<<"Product Rank "<<cnt++<<") " << itr<<"\twith COP Index : "<<forest.get_itemsMap()[itr]->_copIndex<<std::endl;
+        std::cout<<"Product Rank "<<++cnt<<") " << itr<<"\twith COP Index : "<<forest.get_itemsMap()[itr]->_copIndex<<std::endl;
     }
+
+    std::cout<<"Saving the Ranking ... "<<std::endl;
+    std::ofstream outfile("results/result_midpoint.txt");
+    cnt = 0;
+    for(auto itr : top_product){
+        outfile<<"Product Rank "<<++cnt<<") " << itr<<"\twith COP Index : "<<forest.get_itemsMap()[itr]->_copIndex<<"\n";
+    }
+    std::cout<<"Ranking Saved!";
+
 }
