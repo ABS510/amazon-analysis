@@ -15,7 +15,7 @@ int main(){
     std::cout<<"File read!"<<std::endl;
 
     std::cout<<"Appling filter..."<<std::endl;
-    forest.filter(10);
+    forest.filter(100);
     std::cout<<"Filter applied!"<<std::endl;
     
     std::cout<<"Generating top product..."<<std::endl;
