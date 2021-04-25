@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Product Rank 1) 258046	with COP Index : 688
 Product Rank 2) 211890	with COP Index : 682
 Product Rank 3) 143958	with COP Index : 679
@@ -106,6 +107,8 @@ Product Rank 100) 262519	with COP Index : 587
 >>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
 =======
 >>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
+=======
+>>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
 Product Rank 1) 389620	with COP Index : 109
 Product Rank 2) 306490	with COP Index : 109
 Product Rank 3) 295973	with COP Index : 109
@@ -118,6 +121,9 @@ Product Rank 9) 402722	with COP Index : 108
 Product Rank 10) 395873	with COP Index : 108
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
+=======
 >>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
 =======
 >>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
