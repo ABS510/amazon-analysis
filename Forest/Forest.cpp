@@ -72,7 +72,11 @@ void Forest::filter(size_t size){ //size is the number of rankings we want to ge
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         //std::cout<<"Checking Index : "<<index<<" with COPIndex of : "<<copIndex<<std::endl;
+=======
+        // std::cout<<"Checking Index : "<<index<<" with COPIndex of : "<<copIndex<<std::endl;
+>>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
 =======
         // std::cout<<"Checking Index : "<<index<<" with COPIndex of : "<<copIndex<<std::endl;
 >>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
@@ -93,11 +97,19 @@ void Forest::filter(size_t size){ //size is the number of rankings we want to ge
             }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             //std::cout<<"Current Rank:"; //just print to debug
             for(size_t i = 0; i<size; i++){
                 //std::cout<<rank[i].second<<" "; //just print to debug
             }
             //std::cout<<std::endl; //just print to debug
+=======
+            // std::cout<<"Current Rank:"; //just print to debug
+            for(size_t i = 0; i<size; i++){
+                // std::cout<<rank[i].second<<" "; //just print to debug
+            }
+            // std::cout<<std::endl; //just print to debug
+>>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
 =======
             // std::cout<<"Current Rank:"; //just print to debug
             for(size_t i = 0; i<size; i++){
