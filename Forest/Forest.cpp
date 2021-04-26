@@ -69,29 +69,9 @@ void Forest::filter(size_t size){ //size is the number of rankings we want to ge
 
         long index = iter.first;                        //save the itemID in index
         long copIndex = iter.second->_copIndex;         //save copIndex here
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        //std::cout<<"Checking Index : "<<index<<" with COPIndex of : "<<copIndex<<std::endl;
-=======
-        // std::cout<<"Checking Index : "<<index<<" with COPIndex of : "<<copIndex<<std::endl;
->>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
-=======
-        // std::cout<<"Checking Index : "<<index<<" with COPIndex of : "<<copIndex<<std::endl;
->>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
-=======
-        // std::cout<<"Checking Index : "<<index<<" with COPIndex of : "<<copIndex<<std::endl;
->>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
-=======
-        // std::cout<<"Checking Index : "<<index<<" with COPIndex of : "<<copIndex<<std::endl;
->>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
-
-
         if(rank.size()<size) {
             rank.push_back(std::make_pair(copIndex, index)); //if vector is less than desired size, just push back
-            }
+        }
         else{
             sort(rank.rbegin(), rank.rend()); //sort to check if the node we are pushing is greater than min.
             
@@ -99,43 +79,12 @@ void Forest::filter(size_t size){ //size is the number of rankings we want to ge
                 rank.pop_back();
                 rank.push_back(std::make_pair(copIndex, index));
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             //std::cout<<"Current Rank:"; //just print to debug
             for(size_t i = 0; i<size; i++){
                 //std::cout<<rank[i].second<<" "; //just print to debug
             }
             //std::cout<<std::endl; //just print to debug
-=======
-            // std::cout<<"Current Rank:"; //just print to debug
-            for(size_t i = 0; i<size; i++){
-                // std::cout<<rank[i].second<<" "; //just print to debug
-            }
-            // std::cout<<std::endl; //just print to debug
->>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
-=======
-            // std::cout<<"Current Rank:"; //just print to debug
-            for(size_t i = 0; i<size; i++){
-                // std::cout<<rank[i].second<<" "; //just print to debug
-            }
-            // std::cout<<std::endl; //just print to debug
->>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
-=======
-            // std::cout<<"Current Rank:"; //just print to debug
-            for(size_t i = 0; i<size; i++){
-                // std::cout<<rank[i].second<<" "; //just print to debug
-            }
-            // std::cout<<std::endl; //just print to debug
->>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
-=======
-            // std::cout<<"Current Rank:"; //just print to debug
-            for(size_t i = 0; i<size; i++){
-                // std::cout<<rank[i].second<<" "; //just print to debug
-            }
-            // std::cout<<std::endl; //just print to debug
->>>>>>> c1891165d5b98b057bd74f95e5a06e7acd2c812a
         }
     }
     sort(rank.rbegin(), rank.rend()); //sort from largest to smallest in rank
