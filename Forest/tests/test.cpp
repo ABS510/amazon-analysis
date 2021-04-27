@@ -142,3 +142,21 @@ TEST_CASE("Checking filter 1"){
     REQUIRE(2 == forest.get_topProduct()[0]);
     REQUIRE(3 == forest.get_topProduct()[2]);
 }
+
+TEST_CASE("Test Adjacent Vertices"){
+    Forest forest = Forest(1);
+    forest.readFromFile("tests/sample_testcase1.txt");
+    forest.filter(3);
+    // Top 3 products are 1, 2, 3
+    
+    vector<Forest::Node*> adj1 = forest.adjVertices(1);
+    vector<Forest::Node*> adj2 = forest.adjVertices(0);
+    vector<Forest::Node*> adj3 = forest.adjVertices(2);
+    
+    REQUIRE(2 == adj1[0]->_itemId);
+    REQUIRE(3 == adj1[1]->_itemId);
+    REQUIRE(1 == adj2[0]->_itemId);
+    REQUIRE(3 == adj2[1]->_itemId);
+    REQUIRE(2 == adj3[0]->_itemId);
+
+}

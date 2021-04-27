@@ -32,6 +32,7 @@ class Forest{
         unordered_map<long, Node*> get_itemsMap(); // returns _itemsMap
         vector<long> get_topProduct(); //returns _topProduct
 
+        vector<Node*> adjVertices(int idx);
     private:
         unordered_map<long, Node*> _itemsMap;
         vector<long> _topProduct;   //this is to store the itemId of the 500 most optimum products to be cut down to

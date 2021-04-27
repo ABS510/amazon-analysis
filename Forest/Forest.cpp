@@ -155,3 +155,19 @@ unordered_map<long, Forest::Node*> Forest::get_itemsMap(){
 std::vector<long> Forest::get_topProduct(){
     return _topProduct;
 }
+
+vector<Forest::Node*> Forest::adjVertices(int idx) {
+    if (unsigned(idx) >= _topProduct.size()) {
+        return vector<Forest::Node*>();
+    }
+    vector<Node*> adjVertices;
+    long productId = _topProduct[idx];
+    Node* product = _itemsMap[productId];
+    
+    for (Node* adj : product->_connected) {
+        if (std::find(_topProduct.begin(), _topProduct.end(), adj->_itemId) != _topProduct.end()) {
+            adjVertices.push_back(adj);
+        }
+    }
+    return adjVertices;
+}
