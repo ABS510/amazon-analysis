@@ -173,12 +173,12 @@ vector<Forest::Node*> Forest::adjVertices(int idx) {
 }
 
 void Forest::SCCUtil(int u, int disc[], int low[], stack<int> *st,
-                    bool stackMember[])
+                    bool stackMember[], vector<vector<long>>& connectedComps)
 {
     // A static variable is used for simplicity, we can avoid use
     // of static variable by passing a pointer.
     static int time = 0;
-  
+    static int cc = 0;
     // Initialize discovery time and low value
     disc[u] = low[u] = ++time;
     st->push(u);
@@ -195,7 +195,7 @@ void Forest::SCCUtil(int u, int disc[], int low[], stack<int> *st,
         // If v is not visited yet, then recur for it
         if (disc[v] == -1)
         {
-            SCCUtil(v, disc, low, st, stackMember);
+            SCCUtil(v, disc, low, st, stackMember, connectedComps);
   
             // Check if the subtree rooted with 'v' has a
             // connection to one of the ancestors of 'u'
@@ -218,19 +218,26 @@ void Forest::SCCUtil(int u, int disc[], int low[], stack<int> *st,
         {
             w = (int) st->top();
             cout << _topProduct[w] << " ";
+            connectedComps[cc].push_back(_topProduct[w]);
             stackMember[w] = false;
             st->pop();
         }
         w = (int) st->top();
         cout << _topProduct[w] << "\n";
+        connectedComps[cc].push_back(_topProduct[w]);
+        //connectedComps.push_back(vector<long>());
+        cc++;
         stackMember[w] = false;
         st->pop();
     }
 }
   
 // The function to do DFS traversal. It uses SCCUtil()
-void Forest::SCC()
+vector<vector<long>> Forest::SCC()
 {
+    vector<vector<long>> connectedComps;
+    connectedComps.push_back(vector<long>());
+
     int *disc = new int[_topProduct.size()];
     int *low = new int[_topProduct.size()];
     bool *stackMember = new bool[_topProduct.size()];
@@ -248,7 +255,14 @@ void Forest::SCC()
     // connected components in DFS tree with vertex 'i'
     for (int i = 0; unsigned(i) < _topProduct.size(); i++)
         if (disc[i] == -1)
-            SCCUtil(i, disc, low, st, stackMember);
+            SCCUtil(i, disc, low, st, stackMember, connectedComps);
+
+    /*delete[] disc;
+    delete[] low;
+    delete[] stackMember;
+    delete st;*/
+
+    return connectedComps;
 }
 
 int Forest::getIndex(Node* v) {

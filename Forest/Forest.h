@@ -34,8 +34,8 @@ class Forest{
         vector<long> get_topProduct(); //returns _topProduct
 
         vector<Node*> adjVertices(int idx);
-        void SCCUtil(int u, int disc[], int low[], stack<int> *st, bool stackMember[]);
-        void SCC();
+        void SCCUtil(int u, int disc[], int low[], stack<int> *st, bool stackMember[], vector<vector<long>>& connectedComps);
+        vector<vector<long>> SCC();
         int getIndex(Node* v);
 
     private:

@@ -168,3 +168,22 @@ TEST_CASE("Test SSC"){
     
     forest.SCC();
 }
+
+TEST_CASE("test SSC 2"){
+    Forest forest = Forest();
+    forest.readFromFile("tests/sample_testcase2.txt");
+    forest.filter(10);
+
+    /*for (int i = 0; i < 4; i++) {
+        cout << forest.get_topProduct()[i] << endl;
+    }*/
+
+    vector<vector<long>> connectedComps = forest.SCC();
+
+    for (unsigned i = 0; i < connectedComps.size(); i++) {
+        for (unsigned j = 0; j < connectedComps[i].size(); j++) {
+            cout << connectedComps[i][j] << " ";
+        }
+        cout << "\n";
+    }
+}
