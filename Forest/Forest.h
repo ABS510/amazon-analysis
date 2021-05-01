@@ -5,7 +5,8 @@
 #include <unordered_map>
 #include <fstream>
 #include <string>
-
+#include <stack>
+#include <list>
 using namespace std;
 
 class Forest{
@@ -33,6 +34,10 @@ class Forest{
         vector<long> get_topProduct(); //returns _topProduct
 
         vector<Node*> adjVertices(int idx);
+        void SCCUtil(int u, int disc[], int low[], stack<int> *st, bool stackMember[]);
+        void SCC();
+        int getIndex(Node* v);
+
     private:
         unordered_map<long, Node*> _itemsMap;
         vector<long> _topProduct;   //this is to store the itemId of the 500 most optimum products to be cut down to

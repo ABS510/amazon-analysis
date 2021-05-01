@@ -171,3 +171,91 @@ vector<Forest::Node*> Forest::adjVertices(int idx) {
     }
     return adjVertices;
 }
+
+void Forest::SCCUtil(int u, int disc[], int low[], stack<int> *st,
+                    bool stackMember[])
+{
+    // A static variable is used for simplicity, we can avoid use
+    // of static variable by passing a pointer.
+    static int time = 0;
+  
+    // Initialize discovery time and low value
+    disc[u] = low[u] = ++time;
+    st->push(u);
+    stackMember[u] = true;
+  
+    // Go through all vertices adjacent to this
+    vector<Node*>::iterator i;
+
+    vector<Node*> edges = adjVertices(u);
+
+    for (i = edges.begin(); i != edges.end(); ++i)
+    {
+        int v = getIndex(*i);  // v is current adjacent of 'u'
+        // If v is not visited yet, then recur for it
+        if (disc[v] == -1)
+        {
+            SCCUtil(v, disc, low, st, stackMember);
+  
+            // Check if the subtree rooted with 'v' has a
+            // connection to one of the ancestors of 'u'
+            // Case 1 (per above discussion on Disc and Low value)
+            low[u]  = min(low[u], low[v]);
+        }
+  
+        // Update low value of 'u' only of 'v' is still in stack
+        // (i.e. it's a back edge, not cross edge).
+        // Case 2 (per above discussion on Disc and Low value)
+        else if (stackMember[v] == true)
+            low[u]  = min(low[u], disc[v]);
+    }
+  
+    // head node found, pop the stack and print an SCC
+    int w = 0;  // To store stack extracted vertices
+    if (low[u] == disc[u])
+    {
+        while (st->top() != u)
+        {
+            w = (int) st->top();
+            cout << _topProduct[w] << " ";
+            stackMember[w] = false;
+            st->pop();
+        }
+        w = (int) st->top();
+        cout << _topProduct[w] << "\n";
+        stackMember[w] = false;
+        st->pop();
+    }
+}
+  
+// The function to do DFS traversal. It uses SCCUtil()
+void Forest::SCC()
+{
+    int *disc = new int[_topProduct.size()];
+    int *low = new int[_topProduct.size()];
+    bool *stackMember = new bool[_topProduct.size()];
+    stack<int> *st = new stack<int>();
+  
+    // Initialize disc and low, and stackMember arrays
+    for (int i = 0; unsigned(i) < _topProduct.size(); i++)
+    {
+        disc[i] = 0;
+        low[i] = 0;
+        stackMember[i] = false;
+    }
+  
+    // Call the recursive helper function to find strongly
+    // connected components in DFS tree with vertex 'i'
+    for (int i = 0; unsigned(i) < _topProduct.size(); i++)
+        if (disc[i] == 0)
+            SCCUtil(i, disc, low, st, stackMember);
+}
+
+int Forest::getIndex(Node* v) {
+    for (int i = 0; unsigned(i) < _topProduct.size(); i++) {
+        if (v->_itemId == _topProduct[i]) {
+            return i;
+        }
+    }
+    return -1;
+}

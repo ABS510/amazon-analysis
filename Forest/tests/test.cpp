@@ -158,5 +158,13 @@ TEST_CASE("Test Adjacent Vertices"){
     REQUIRE(1 == adj2[0]->_itemId);
     REQUIRE(3 == adj2[1]->_itemId);
     REQUIRE(2 == adj3[0]->_itemId);
+}
 
+TEST_CASE("Test SSC"){
+    Forest forest = Forest(1);
+    forest.readFromFile("tests/sample_testcase1.txt");
+    forest.filter(3);
+    // Top 3 products are 1, 2, 3
+    
+    forest.SCC();
 }
