@@ -239,15 +239,15 @@ void Forest::SCC()
     // Initialize disc and low, and stackMember arrays
     for (int i = 0; unsigned(i) < _topProduct.size(); i++)
     {
-        disc[i] = 0;
-        low[i] = 0;
+        disc[i] = -1;
+        low[i] = -1;
         stackMember[i] = false;
     }
   
     // Call the recursive helper function to find strongly
     // connected components in DFS tree with vertex 'i'
     for (int i = 0; unsigned(i) < _topProduct.size(); i++)
-        if (disc[i] == 0)
+        if (disc[i] == -1)
             SCCUtil(i, disc, low, st, stackMember);
 }
 
