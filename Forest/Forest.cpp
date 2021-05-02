@@ -178,7 +178,6 @@ void Forest::SCCUtil(int u, int disc[], int low[], stack<int> *st,
     // A static variable is used for simplicity, we can avoid use
     // of static variable by passing a pointer.
     static int time = 0;
-    static int cc = 0;
     // Initialize discovery time and low value
     disc[u] = low[u] = ++time;
     st->push(u);
@@ -214,19 +213,17 @@ void Forest::SCCUtil(int u, int disc[], int low[], stack<int> *st,
     int w = 0;  // To store stack extracted vertices
     if (low[u] == disc[u])
     {
+        vector<long> temp;
         while (st->top() != u)
         {
             w = (int) st->top();
-            cout << _topProduct[w] << " ";
-            connectedComps[cc].push_back(_topProduct[w]);
+            temp.push_back(_topProduct[w]);
             stackMember[w] = false;
             st->pop();
         }
         w = (int) st->top();
-        cout << _topProduct[w] << "\n";
-        connectedComps[cc].push_back(_topProduct[w]);
-        //connectedComps.push_back(vector<long>());
-        cc++;
+        temp.push_back(_topProduct[w]);
+        connectedComps.push_back(temp);
         stackMember[w] = false;
         st->pop();
     }
@@ -236,7 +233,6 @@ void Forest::SCCUtil(int u, int disc[], int low[], stack<int> *st,
 vector<vector<long>> Forest::SCC()
 {
     vector<vector<long>> connectedComps;
-    connectedComps.push_back(vector<long>());
 
     int *disc = new int[_topProduct.size()];
     int *low = new int[_topProduct.size()];
@@ -257,10 +253,10 @@ vector<vector<long>> Forest::SCC()
         if (disc[i] == -1)
             SCCUtil(i, disc, low, st, stackMember, connectedComps);
 
-    /*delete[] disc;
+    delete[] disc;
     delete[] low;
     delete[] stackMember;
-    delete st;*/
+    delete st;
 
     return connectedComps;
 }

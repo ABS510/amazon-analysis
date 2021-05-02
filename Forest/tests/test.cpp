@@ -165,8 +165,10 @@ TEST_CASE("Test SSC"){
     forest.readFromFile("tests/sample_testcase1.txt");
     forest.filter(3);
     // Top 3 products are 1, 2, 3
-    
-    forest.SCC();
+    vector<vector<long>> expected = {{3, 1, 2}};
+    vector<vector<long>> actual = forest.SCC();
+
+    REQUIRE(expected == actual);
 }
 
 TEST_CASE("test SSC 2"){
@@ -174,16 +176,19 @@ TEST_CASE("test SSC 2"){
     forest.readFromFile("tests/sample_testcase2.txt");
     forest.filter(10);
 
-    /*for (int i = 0; i < 4; i++) {
-        cout << forest.get_topProduct()[i] << endl;
-    }*/
+    vector<vector<long>> expected = {{10}, {5, 1, 3, 2, 4, 6, 7}};
+    vector<vector<long>> actual = forest.SCC();
 
-    vector<vector<long>> connectedComps = forest.SCC();
+    REQUIRE(expected == actual);
+}
 
-    for (unsigned i = 0; i < connectedComps.size(); i++) {
-        for (unsigned j = 0; j < connectedComps[i].size(); j++) {
-            cout << connectedComps[i][j] << " ";
-        }
-        cout << "\n";
-    }
+TEST_CASE("test SSC 3"){
+    Forest forest = Forest();
+    forest.readFromFile("tests/sample_testcase3.txt");
+    forest.filter(12);
+
+    vector<vector<long>> expected = {{8, 9, 10, 11, 12}, {7}, {6}, {5}, {4}, {3}, {2}, {1}};
+    vector<vector<long>> actual = forest.SCC();
+
+    REQUIRE(expected == actual);
 }
