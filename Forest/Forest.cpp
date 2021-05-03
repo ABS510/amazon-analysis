@@ -79,12 +79,6 @@ void Forest::filter(size_t size){ //size is the number of rankings we want to ge
                 rank.pop_back();
                 rank.push_back(std::make_pair(copIndex, index));
             }
-
-            //std::cout<<"Current Rank:"; //just print to debug
-            for(size_t i = 0; i<size; i++){
-                //std::cout<<rank[i].second<<" "; //just print to debug
-            }
-            //std::cout<<std::endl; //just print to debug
         }
     }
     sort(rank.rbegin(), rank.rend()); //sort from largest to smallest in rank
