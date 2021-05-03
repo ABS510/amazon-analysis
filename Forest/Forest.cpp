@@ -71,7 +71,7 @@ void Forest::filter(size_t size){ //size is the number of rankings we want to ge
         long copIndex = iter.second->_copIndex;         //save copIndex here
         if(rank.size()<size) {
             rank.push_back(std::make_pair(copIndex, index)); //if vector is less than desired size, just push back
-            }
+        }
         else{
             sort(rank.rbegin(), rank.rend()); //sort to check if the node we are pushing is greater than min.
             
@@ -79,14 +79,6 @@ void Forest::filter(size_t size){ //size is the number of rankings we want to ge
                 rank.pop_back();
                 rank.push_back(std::make_pair(copIndex, index));
             }
-            // std::cout<<"Current Rank:"; //just print to debug
-            for(size_t i = 0; i<size; i++){
-                // std::cout<<rank[i].second<<" "; //just print to debug
-            }
-            // std::cout<<std::endl; //just print to debug
-
-            //std::cout<<"Current Rank:"; //just print to debugug
-
         }
     }
     sort(rank.rbegin(), rank.rend()); //sort from largest to smallest in rank
