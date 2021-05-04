@@ -15,4 +15,9 @@ After determining the COP indexes for every product, our project's objective is 
 For example, if we want the top-10 products with largest COP index, we would set filter(10).</b>
 After finishing the algorithms (IDDFS and filter), we created our own MakeFile and test cases for compilation and testing. After the mini tests work out, we succesfully ran our code with our actual Amazon dataset.</b> Soon Ha also implemented I/O code to output the filtered top-N products as well as its cop index to a separate txt file in main.cpp for better visualizing.</b>
 
-## Week 3 (April 26 - April 30)
+## Week 3 (April 26 - May 2)
+
+We implemented Tarjan's algorithm. This algorithm can be used on the top products and find strongly connected components on each top prodcut. We also added unit tests on multiple graphs to test the robustness of the algorithm. Next week's goal is to implement BFS and then tie everything together to draw insighful conclusions from the data sets. We'll also begin writing the final report once we have completed everything. 
+
+
+
