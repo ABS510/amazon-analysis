@@ -5,7 +5,7 @@
 
 int main(){
     int limit;
-    limit = 2;
+    limit = 3;
     Forest forest = Forest(limit);
 
     std::cout<<"Class Created!"<<std::endl;
@@ -15,7 +15,7 @@ int main(){
     std::cout<<"File read!"<<std::endl;
 
     std::cout<<"Appling filter..."<<std::endl;
-    forest.filter(100);
+    forest.filter(300);
     std::cout<<"Filter applied!"<<std::endl;
     
     std::cout<<"Generating top product..."<<std::endl;
@@ -33,6 +33,13 @@ int main(){
     for(auto itr : top_product){
         outfile<<"Product Rank "<<++cnt<<") " << itr<<"\twith COP Index : "<<forest.get_itemsMap()[itr]->_copIndex<<"\n";
     }
-    std::cout<<"Ranking Saved!";
+    std::cout<<"Ranking Saved!" << "\n";
 
+    vector<vector<long>> stronglyConnected = forest.SCC();
+    for (unsigned i = 0; i < stronglyConnected.size(); i++) {
+        for (unsigned j = 0; j < stronglyConnected[i].size(); j++) {
+            cout << stronglyConnected[i][j] << " ";
+        }
+        cout << "\n";
+    }
 }
