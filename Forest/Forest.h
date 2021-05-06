@@ -33,11 +33,15 @@ class Forest{
         unordered_map<long, Node*> get_itemsMap(); // returns _itemsMap
         vector<long> get_topProduct(); //returns _topProduct
 
+        //Tarjan's Algorithm
         vector<Node*> adjVertices(int idx); //returns all adjacent vertices of a Node within _topProucts
         void SCCUtil(int u, int disc[], int low[], stack<int> *st, bool stackMember[], vector<vector<long>>& connectedComps); //Helper function for Tarjans alg
         vector<vector<long>> SCC(); // Tarjan's Algorithm
         int getIndex(Node* v); // Gets the index of v in _topProduct
 
+        //Breadth First Search Traversal
+        unsigned long BFS();        //traverse our graph in a BFS manner and return the total number of nodes
+        unsigned long BFShelper(Node* node, std::unordered_map<Node*, bool>& memo, int limit);
     private:
         unordered_map<long, Node*> _itemsMap;
         vector<long> _topProduct;   //this is to store the itemId of the 500 most optimum products to be cut down to
