@@ -15,7 +15,6 @@ unsigned long Forest::BFS(){
 
     for(unsigned int m = 0; m<_topProduct.size();m++){
         count = count + BFShelper(_itemsMap[_topProduct[m]], visited, _copLimit);
-        //std::cout << count << std::endl;
     }
     return count;
 }
@@ -41,13 +40,10 @@ unsigned long Forest::BFShelper(Node* node, std::unordered_map<Node*, bool>& mem
             }
             memo[node->_connected[i]] = true;
         }
-        //std::cout << count << " " << node->_itemId << std::endl;
         return count;   
     }
     for(unsigned int i=0; i<node->_connected.size(); i++){
-        //memo[node->_connected[i]] = true;
         count = count + BFShelper(node->_connected[i], memo, limit-1);
-        //memo[node->_connected[i]] = true;
     }
     return count;
 }
@@ -61,11 +57,6 @@ Forest::Forest(int copLimit){
     _copLimit = copLimit;
 }
 
-
-/*
-Set the limit for co-purchasing, this is the limit used for IDDFS
-*/
-
 Forest::Node::Node(){
     Node::_itemId = -1; //set _itemID as default
     Node::_copIndex = -1; //set _copIndex to be -1 as default
@@ -75,15 +66,6 @@ Forest::Node::Node(long itemId){
     Node::_itemId = itemId;
     Node::_copIndex = 0;
 }
-
-
-/*
-Function below takes in the .txt file and create the forest of all items by
-mapping each itemId to their pointer in the forest
-*/
-
-
-
 
 void Forest::readFromFile(string file){
     std::ifstream myfile(file); //read from file to myfile
@@ -101,7 +83,7 @@ void Forest::readFromFile(string file){
     } 
 }
 
-void Forest::filter(size_t size){ //size is the number of rankings we want to get. i.e. size = 30, we get top 30 products of highest copIndex
+void Forest::filter(size_t size){ //size is the number of rankings we want.
     for(auto &iter : _itemsMap){ //iterate through _itemsMap
         long index = iter.first; //we know first element of itemsmap is the index(itemID)
         Node* node = iter.second;//second is the address of that index
@@ -129,15 +111,14 @@ void Forest::filter(size_t size){ //size is the number of rankings we want to ge
     sort(rank.rbegin(), rank.rend()); //sort from largest to smallest in rank
 
     for(auto &iter : rank){
-        _topProduct.push_back(iter.second); //push in the rank of the index. Now, _top500 will store the items with highest copIndex
+        _topProduct.push_back(iter.second); //push in the rank of the index.
     }
 }
 
 /*
-Perform IDDFS starting from the <start> node with the given <limit> and count the number of distinct nodes that are linked to <start>
+Perform IDDFS starting from the <start> node with the given <limit> 
+and count the number of distinct nodes that are linked to <start>
 Set the count of distinct linked nodes within the Node class's <_copIndex>
-Return count
-Is it possible(easier) to implement using recursion? 
 */
 int Forest::IDDFS(Node* start, int limit){
     unordered_map<Forest::Node*, bool> visited; //created map of visited to perfrom the recursive iteration
@@ -145,19 +126,13 @@ int Forest::IDDFS(Node* start, int limit){
 }
 
 int Forest::IDDFS_helper(Node* start, Node* cur, int limit, unordered_map<Node*, bool>& bookkeep){
-    /*
-    Node* start     : starting address of the Depth limited search (DLS)
-    Node* cur       : current address we are iterating
-    int limit       : limit we will set in our depth limited search
-    map<> bookkeep  : checks which nodes are visited and which are not to prevent crash
-    */
-
+    
     int count = 0; //count is number of nodes it is connected to.
 
-    if(limit == 1){ //base case
+    if(limit == 1) { //base case
         bookkeep[cur] = 1; 
         count = cur->_connected.size(); //set count to be the number of connected nodes
-        for(unsigned long i = 0; i<cur->_connected.size(); i++){ //delete all the duplicating nodes
+        for(unsigned long i = 0; i<cur->_connected.size(); i++) { //delete all the duplicating nodes
             if(bookkeep[cur->_connected[i]]) count--;
             bookkeep[cur->_connected[i]] = 1;
         }
@@ -170,7 +145,9 @@ int Forest::IDDFS_helper(Node* start, Node* cur, int limit, unordered_map<Node*,
     count += cur->_connected.size();          //for every node we visit, we need to add its branching factor
     for(unsigned long i = 0; i<cur->_connected.size(); i++){
         if(bookkeep[cur->_connected[i]]) count--; //if we have visited the node, we decrement the count 
-        count = count + IDDFS_helper(start, cur->_connected[i], limit-1, bookkeep);   //perform IDDFS on each immediately neighboring node
+
+        //perform IDDFS on each immediately neighboring node
+        count = count + IDDFS_helper(start, cur->_connected[i], limit-1, bookkeep);
     }
     return count;
 }
@@ -211,8 +188,6 @@ vector<Forest::Node*> Forest::adjVertices(int idx) {
 void Forest::SCCUtil(int u, int disc[], int low[], stack<int> *st,
                     bool stackMember[], vector<vector<long>>& connectedComps)
 {
-    // A static variable is used for simplicity, we can avoid use
-    // of static variable by passing a pointer.
     static int time = 0;
     // Initialize discovery time and low value
     disc[u] = low[u] = ++time;

@@ -41,16 +41,16 @@ int main(){
     std::cout<<"Ranking Saved!" << "\n";
 
     std::cout<<"Do you want to execute Tarjan's algorithm? (yes or no)"<<std::endl;
-    std::string whatever0;
-    std::cin>> whatever0;
-    if(whatever0 == "yes"){
-        int foo = 0;
+    std::string tarjan;
+    std::cin>> tarjan;
+    if(tarjan == "yes") {
+        int scc_number = 0;
         vector<vector<long>> stronglyConnected = forest.SCC();
         for (unsigned i = 0; i < stronglyConnected.size(); i++) {
             if(stronglyConnected[i].size() <= 1){
                 continue;
             }
-            cout << "Strongly connected component " << ++foo << ": ";
+            cout << "Strongly connected component " << ++scc_number << ": ";
             for (unsigned j = 0; j < stronglyConnected[i].size(); j++) {
                 cout << stronglyConnected[i][j] << " ";
             }
@@ -59,9 +59,9 @@ int main(){
     }
 
     std::cout<<"Do you want to execute BFS? (yes or no)"<<std::endl;
-    std::string whatever;
-    std::cin>> whatever;
-    if(whatever == "yes"){
+    std::string bfs;
+    std::cin>> bfs;
+    if(bfs == "yes") {
         unsigned long _totalnumfiltered = forest.BFS();
         cout << "After filtering, total number of products now is: " << _totalnumfiltered << endl;
     }

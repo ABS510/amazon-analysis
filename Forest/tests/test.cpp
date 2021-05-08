@@ -102,7 +102,7 @@ TEST_CASE("Checking IDDFS testcase 3 "){
 
 }
 
-TEST_CASE("Checking IDDFS Final "){
+TEST_CASE("Checking IDDFS Final"){
     Forest forest = Forest();
     forest.readFromFile("tests/sample_testcase4.txt");
     
@@ -160,7 +160,7 @@ TEST_CASE("Test Adjacent Vertices"){
     REQUIRE(2 == adj3[0]->_itemId);
 }
 
-TEST_CASE("Test SSC"){
+TEST_CASE("SCC on graph with a single strongly connected component"){
     Forest forest = Forest(1);
     forest.readFromFile("tests/sample_testcase1.txt");
     forest.filter(3);
@@ -171,7 +171,7 @@ TEST_CASE("Test SSC"){
     REQUIRE(expected == actual);
 }
 
-TEST_CASE("test SSC 2"){
+TEST_CASE("SCC on graph with 2 strongly connected components"){
     Forest forest = Forest();
     forest.readFromFile("tests/sample_testcase2.txt");
     forest.filter(10);
@@ -182,7 +182,7 @@ TEST_CASE("test SSC 2"){
     REQUIRE(expected == actual);
 }
 
-TEST_CASE("test SSC 3"){
+TEST_CASE("SCC on disconnected graph"){
     Forest forest = Forest();
     forest.readFromFile("tests/sample_testcase3.txt");
     forest.filter(12);
@@ -191,4 +191,29 @@ TEST_CASE("test SSC 3"){
     vector<vector<long>> actual = forest.SCC();
 
     REQUIRE(expected == actual);
+}
+
+TEST_CASE("BFS test with cop_limit 2") {
+    Forest forest = Forest(2);
+    forest.readFromFile("tests/sample_testcase1.txt");
+    forest.filter(3);
+    long BFS_count = forest.BFS();
+    REQUIRE(BFS_count == 7);
+    
+}
+
+TEST_CASE("BFS test with cop_limit 3") {
+    Forest forest = Forest(3);
+    forest.readFromFile("tests/sample_testcase2.txt");
+    forest.filter(3);
+    long BFS_count = forest.BFS();
+    REQUIRE(BFS_count == 8);
+}
+
+TEST_CASE("BFS on a disconnected graph") {
+    Forest forest = Forest(1);
+    forest.readFromFile("tests/sample_testcase2.txt");
+    forest.filter(4);
+    long BFS_count = forest.BFS();
+    REQUIRE(BFS_count == 7);
 }
