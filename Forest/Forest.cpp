@@ -6,6 +6,51 @@
 #include <algorithm>
 #include <fstream>
 #include <string>
+#include <queue>
+
+unsigned long Forest::BFS(){
+    std::queue<Node*> bfsqueue;
+    std::unordered_map<Node*, bool> visited;
+    unsigned long count = 0;
+
+    for(unsigned int m = 0; m<_topProduct.size();m++){
+        count = count + BFShelper(_itemsMap[_topProduct[m]], visited, _copLimit);
+        //std::cout << count << std::endl;
+    }
+    return count;
+}
+
+unsigned long Forest::BFShelper(Node* node, std::unordered_map<Node*, bool>& memo, int limit){
+    if(limit < 0){
+        return 0;
+    }
+    unsigned long count;
+    if(memo[node]){
+        count = 0;
+    }else{
+        count = 1;
+    }
+    if(limit == 0){
+        return count;
+    }
+    memo[node] = true;
+    if(limit == 1){
+        for(unsigned int i=0; i<node->_connected.size(); i++){
+            if(!(memo[node->_connected[i]])){
+                count++;
+            }
+            memo[node->_connected[i]] = true;
+        }
+        //std::cout << count << " " << node->_itemId << std::endl;
+        return count;   
+    }
+    for(unsigned int i=0; i<node->_connected.size(); i++){
+        //memo[node->_connected[i]] = true;
+        count = count + BFShelper(node->_connected[i], memo, limit-1);
+        //memo[node->_connected[i]] = true;
+    }
+    return count;
+}
 
 
 Forest::Forest(){
@@ -71,7 +116,7 @@ void Forest::filter(size_t size){ //size is the number of rankings we want to ge
         long copIndex = iter.second->_copIndex;         //save copIndex here
         if(rank.size()<size) {
             rank.push_back(std::make_pair(copIndex, index)); //if vector is less than desired size, just push back
-            }
+        }
         else{
             sort(rank.rbegin(), rank.rend()); //sort to check if the node we are pushing is greater than min.
             
@@ -79,14 +124,6 @@ void Forest::filter(size_t size){ //size is the number of rankings we want to ge
                 rank.pop_back();
                 rank.push_back(std::make_pair(copIndex, index));
             }
-            // std::cout<<"Current Rank:"; //just print to debug
-            for(size_t i = 0; i<size; i++){
-                // std::cout<<rank[i].second<<" "; //just print to debug
-            }
-            // std::cout<<std::endl; //just print to debug
-
-            //std::cout<<"Current Rank:"; //just print to debugug
-
         }
     }
     sort(rank.rbegin(), rank.rend()); //sort from largest to smallest in rank
@@ -132,8 +169,7 @@ int Forest::IDDFS_helper(Node* start, Node* cur, int limit, unordered_map<Node*,
     bookkeep[cur] = 1; //set the node as visited
     count += cur->_connected.size();          //for every node we visit, we need to add its branching factor
     for(unsigned long i = 0; i<cur->_connected.size(); i++){
-        if(bookkeep[cur->_connected[i]]) count--; //if we have visited the node, we decrement the count
-        // bookkeep[cur->_connected[i]] = 1; 
+        if(bookkeep[cur->_connected[i]]) count--; //if we have visited the node, we decrement the count 
         count = count + IDDFS_helper(start, cur->_connected[i], limit-1, bookkeep);   //perform IDDFS on each immediately neighboring node
     }
     return count;

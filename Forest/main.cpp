@@ -14,8 +14,8 @@ int main(){
     forest.readFromFile("../Amazon0601.txt");
     std::cout<<"File read!"<<std::endl;
 
-    std::cout<<"Appling filter..."<<std::endl;
-    forest.filter(300);
+    std::cout<<"Applying filter..."<<std::endl;
+    forest.filter(100);
     std::cout<<"Filter applied!"<<std::endl;
     
     std::cout<<"Generating top product..."<<std::endl;
@@ -36,10 +36,13 @@ int main(){
     std::cout<<"Ranking Saved!" << "\n";
 
     vector<vector<long>> stronglyConnected = forest.SCC();
-    for (unsigned i = 0; i < stronglyConnected.size(); i++) {
+    /*for (unsigned i = 0; i < stronglyConnected.size(); i++) {
         for (unsigned j = 0; j < stronglyConnected[i].size(); j++) {
             cout << stronglyConnected[i][j] << " ";
         }
         cout << "\n";
-    }
+    }*/
+
+    unsigned long _totalnumfiltered = forest.BFS();
+    cout << "After filtering, total number of products now is: " << _totalnumfiltered << endl;
 }
