@@ -5,15 +5,17 @@
 
 int main(){
     int limit;
-    limit = 3;
+    std::cout << "Enter limit for IDDFS (less than or equal to 4): " << std::endl;
+    std::cin >> limit >> std::endl;
     Forest forest = Forest(limit);
+    std::cout<<"Forest initialized!"<<std::endl;
 
-    std::cout<<"Class Created!"<<std::endl;
-
-    std::cout<<"Reading from file..."<<std::endl;
-    forest.readFromFile("../Amazon0601.txt");
+    std::cout<<"Enter input file: "<<std::endl;
+    std::string file;
+    std::cin >> file >> std::endl; 
+    forest.readFromFile(file);
     std::cout<<"File read!"<<std::endl;
-
+    
     std::cout<<"Applying filter..."<<std::endl;
     forest.filter(100);
     std::cout<<"Filter applied!"<<std::endl;
