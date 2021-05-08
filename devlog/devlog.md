@@ -17,7 +17,11 @@ After finishing the algorithms (IDDFS and filter), we created our own MakeFile a
 
 ## Week 3 (April 26 - May 2)
 
-We implemented Tarjan's algorithm. This algorithm can be used on the top products and find strongly connected components on each top prodcut. We also added unit tests on multiple graphs to test the robustness of the algorithm. Next week's goal is to implement BFS and then tie everything together to draw insighful conclusions from the data sets. We'll also begin writing the final report once we have completed everything. 
+We implemented Tarjan's algorithm. This algorithm can be used on the top products and find strongly connected components on each top prodcut. We also added unit tests on multiple graphs to test the robustness of the algorithm. Next week's goal is to implement BFS and then tie everything together to draw insighful conclusions from the data sets. We'll also begin writing the final report once we have completed everything.
+
+## Week 4 (May 2 - May 9)
+
+Since we are done with our two algorithms, Shu Xian finished implementing the traversal (Breadth First Search) on our graph. The implementation itself is relatively straightforward as it shares a similar logic to IDDFS algorithm. Our BFS will return the total number of nodes within our graph that has been processed. By the end of this week, we are planning to polish up all the codes that we have, finish the documentation work needed for final submission and if all goes well, also complete our presentation recording. If all of these can be done, then next week will just be about making sure nothing goes wrong.
 
 
 

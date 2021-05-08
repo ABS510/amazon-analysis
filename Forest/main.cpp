@@ -2,20 +2,25 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <stdio.h>
 
 int main(){
     int limit;
-    limit = 3;
+    std::cout << "Enter limit for IDDFS (less than or equal to 4): " << std::endl;
+    std::cin >> limit;
     Forest forest = Forest(limit);
+    std::cout<<"Forest initialized!"<<std::endl;
 
-    std::cout<<"Class Created!"<<std::endl;
-
-    std::cout<<"Reading from file..."<<std::endl;
-    forest.readFromFile("../Amazon0601.txt");
+    std::cout<<"Enter input file: "<<std::endl;
+    std::string file;
+    std::cin >> file; 
+    forest.readFromFile(file);
     std::cout<<"File read!"<<std::endl;
-
-    std::cout<<"Applying filter..."<<std::endl;
-    forest.filter(100);
+    
+    int top;
+    std::cout<<"Enter ranking N: "<<std::endl;
+    std::cin >> top;
+    forest.filter(top);
     std::cout<<"Filter applied!"<<std::endl;
     
     std::cout<<"Generating top product..."<<std::endl;
@@ -35,14 +40,29 @@ int main(){
     }
     std::cout<<"Ranking Saved!" << "\n";
 
-    vector<vector<long>> stronglyConnected = forest.SCC();
-    /*for (unsigned i = 0; i < stronglyConnected.size(); i++) {
-        for (unsigned j = 0; j < stronglyConnected[i].size(); j++) {
-            cout << stronglyConnected[i][j] << " ";
+    std::cout<<"Do you want to execute Tarjan's algorithm? (yes or no)"<<std::endl;
+    std::string whatever0;
+    std::cin>> whatever0;
+    if(whatever0 == "yes"){
+        int foo = 0;
+        vector<vector<long>> stronglyConnected = forest.SCC();
+        for (unsigned i = 0; i < stronglyConnected.size(); i++) {
+            if(stronglyConnected[i].size() <= 1){
+                continue;
+            }
+            cout << "Strongly connected component " << ++foo << ": ";
+            for (unsigned j = 0; j < stronglyConnected[i].size(); j++) {
+                cout << stronglyConnected[i][j] << " ";
+            }
+            cout << "\n";
         }
-        cout << "\n";
-    }*/
+    }
 
-    unsigned long _totalnumfiltered = forest.BFS();
-    cout << "After filtering, total number of products now is: " << _totalnumfiltered << endl;
+    std::cout<<"Do you want to execute BFS? (yes or no)"<<std::endl;
+    std::string whatever;
+    std::cin>> whatever;
+    if(whatever == "yes"){
+        unsigned long _totalnumfiltered = forest.BFS();
+        cout << "After filtering, total number of products now is: " << _totalnumfiltered << endl;
+    }
 }
