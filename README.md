@@ -15,7 +15,17 @@
 </ol>
   
 ## Project Goal
-asd
+Whenever we surf in Amazon, Amazon always tempts us to purchase related products. When I buy shampoo, they would suggest soap and shower towel. When I buy calculator, they would suggest pen and pencil. The following image shows bunch of Amazon suggestions when I searched "monitor"
+<p align="center">
+  <a href="../readme/assets/am_example.PNG">
+    <img src="../readme/assets/am_example.PNG" alt="amazon" width= 60%, height = 50%>
+  </a>
+</p>
+We were curious about three things, which we tried to find out by project:
+1. What is the item that renders the most number of related purchases (IDDFS, Depth Limited Search),
+2. What is the product that would be most efficient to promote on (Tarjan's Algorithm),
+3. [Shawn please add here]
+
 
 ## Getting Started
 You can follow few easy steps to execute our project.
@@ -47,7 +57,7 @@ Enter ranking N: 100
 Do you want to execute Tarjan's algorithm? (yes or no): yes
 Do you want to execute BFS? (yes or no): no
 ```
-Doing so will output results for IDDFS and Tarjan's Algorithm but not BFS.
+Doing so will output results for IDDFS and Tarjan's Algorithm but not BFS. Also, in the example, we have selected `../Amazon6061.txt` for our input, but you can input any input data just by simply typing in the file path after `Enter input file: ` command.
 
 #### Executing testcases
 you can also run testcases with the following steps:
