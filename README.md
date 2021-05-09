@@ -10,7 +10,7 @@
     <a href=#getting-started>Getting Started</a>
   </li>
   <li>
-    <a href=#Location> Data Location</a>
+    <a href=#location-of-code-data-and-results> Location of Code, Data, and Results</a>
   </li>
 </ol>
   
