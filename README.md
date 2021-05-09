@@ -39,9 +39,9 @@ Whenever we surf in Amazon, Amazon always tempts us to purchase related products
   </a>
 </p>
 We were curious about three things, which we tried to find out by project:
-1. What is the item that renders the most number of related purchases (IDDFS, Depth Limited Search),
-2. What is the product that would be most efficient to promote on (Tarjan's Algorithm),
-3. [Shawn please add here]
+1. What are the top-N items that render the most number of related purchases (IDDFS, Depth Limited Search)?
+2. Among the top-N products from step 1, what are the products that would be most profitable to promote on (Tarjan's Algorithm)?
+3. After filtering top-N products from the raw dataset, what are the total number of products we are left with? (Breadth First Search) 
 
 
 ## Getting Started
@@ -60,7 +60,7 @@ To begin with, you will have to load llvm on EWS environment with `module load l
    cd Forest
    ```
 ### Execution
-run main.cpp file to execute our project
+Inside the Forest directory, run main.cpp file to execute our project
 ```sh
 make
 ./main
@@ -87,6 +87,7 @@ you can also run testcases with the following steps:
    ```
    ./test "Checking IDDFS testcase 3"
    ```
+3. Note for test suite: In our test suite, we created specific test cases for: Constructor (both Node and Forest class), File I/O, IDDFS, Tarjan's Algorithm (we call them SCC in our test cases description), BFS, and also some miscellaneous test cases that test some of the nested helper functions inside our main algorithms. For each algorithm & traversal, we created at least two different test cases to account for graphs of different nature. What each test case does should be fairly straightforward from the title of our test cases.
 
 ## Location of Code, Data, and Results
 All our code, test suite and results are in the Forest directory. Our code is in the files "Forest.h", "Forest.cpp" and "main.cpp". Our test suite is in the Tests directory. Our results will be outputted into the "result_midpoint.txt" file (in the results directory). Our dataset is in the general directory - "Amazon0601.txt", while we have self made test cases from sample_testcase1.txt to sample_testcase4.txt in directory called /tests. In the /tests directory, you can also see the visualization of the sample input.
