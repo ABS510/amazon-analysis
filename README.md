@@ -50,7 +50,16 @@ Do you want to execute BFS? (yes or no): no
 Doing so will output results for IDDFS and Tarjan's Algorithm but not BFS.
 
 #### Executing testcases
-
+you can also run testcases with the following steps:
+1. run <a href=../master/Forest/tests/test.cpp>test.cpp</a>
+   ```
+   make test
+   ./test
+   ```
+2. Test can be run by `./test`, or can be run with `./test "test names"`. <a href=../master/Forest/tests/test.cpp>test.cpp</a> is located in `Forest/tests/`
+   ```
+   ./test "Checking IDDFS testcase 3"
+   ```
 
 ## Location of Code, Data, and Results
 All our code, test suite and results are in the Forest directory. Our code is in the files "Forest.h", "Forest.cpp" and "main.cpp". Our test suite is in the Tests directory. Our results will be outputted into the "result_midpoint.txt" file (in the results directory). Our dataset is in the general directory - "Amazon0601.txt", while we have self made test cases from sample_testcase1.txt to sample_testcase4.txt in directory called /tests. In the /tests directory, you can also see the visualization of the sample input.
