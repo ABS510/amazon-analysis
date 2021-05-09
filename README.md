@@ -8,6 +8,23 @@
   </li>
   <li>
     <a href=#getting-started>Getting Started</a>
+    <ul>
+      <li>
+        <a href=#prerequisites>Prerequisites</a>
+      </li>
+      <li>
+        <a href=#installation>Installation</a>
+      </li>
+      <li>
+        <a href=#execution>Execution</a>
+      </li>
+      <ul>
+        <li>  
+          <a href=#executing-testcases>Executing Testcases</a>
+        </li>
+      </ul>
+    </ul>
+      
   </li>
   <li>
     <a href=#location-of-code-data-and-results> Location of Code, Data, and Results</a>
