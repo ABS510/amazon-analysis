@@ -21,19 +21,17 @@ asd
 You can follow few easy steps to execute our project.
 
 ### Prerequisites
-To begin with, you will have to load llvm on EWS environment.
-```sh
-module load llvm
-```
+To begin with, you will have to load llvm on EWS environment with `module load llvm`
+
 ### Installation
-Clone this repository
-```sh
-git clone https://github-dev.cs.illinois.edu/cs225-sp21/soonhah2-sxlai2-tkim139-abs7.git
-```
-Because our execution file is located inside /Forest, cd into it. For more information on our directory structure, please refer to <a href=#Location>Location of Code, Data, and Results</a>
-```sh
-cd Forest
-```
+1. Clone this repository
+   ```sh
+   git clone https://github-dev.cs.illinois.edu/cs225-sp21/soonhah2-sxlai2-tkim139-abs7.git
+   ```
+2. Locate in correct directory. For more information on our directory structure, please refer to <a href=#Location>Location of Code, Data, and Results</a>
+   ```sh
+   cd Forest
+   ```
 ### Execution
 run main.cpp file to execute our project
 ```sh
