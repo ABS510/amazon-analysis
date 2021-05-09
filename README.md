@@ -114,3 +114,6 @@ All our code, test suite and results are in the Forest directory. Our code is in
 ├── Final Project Proposal.md
 └── Team_Contract.md
 ```
+
+## Acknowledgement
+Special thanks to Rishabh for being our good TA!
