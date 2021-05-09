@@ -23,22 +23,22 @@ int main(){
     forest.filter(top);
     std::cout<<"Filter applied!"<<std::endl;
     
-    std::cout<<"Generating top product..."<<std::endl;
+    //std::cout<<"Generating top product..."<<std::endl;
     std::vector<long> top_product = forest.get_topProduct();
-    std::cout<<"Top product generated at index:"<<std::endl;
+    //std::cout<<"Top product generated at index:"<<std::endl;
     
     int cnt = 0;
-    for(auto itr : top_product){
+    /*for(auto itr : top_product){
         std::cout<<"Product Rank "<<++cnt<<") " << itr<<"\twith COP Index : "<<forest.get_itemsMap()[itr]->_copIndex<<std::endl;
-    }
+    }*/
 
-    std::cout<<"Saving the Ranking ... "<<std::endl;
+    //std::cout<<"Saving the Ranking ... "<<std::endl;
     std::ofstream outfile("results/result_midpoint.txt");
     cnt = 0;
     for(auto itr : top_product){
         outfile<<"Product Rank "<<++cnt<<") " << itr<<"\twith COP Index : "<<forest.get_itemsMap()[itr]->_copIndex<<"\n";
     }
-    std::cout<<"Ranking Saved!" << "\n";
+    //std::cout<<"Ranking Saved!" << "\n";
 
     std::cout<<"Do you want to execute Tarjan's algorithm? (yes or no)"<<std::endl;
     std::string tarjan;
@@ -46,7 +46,7 @@ int main(){
     if(tarjan == "yes") {
         int scc_number = 0;
         vector<vector<long>> stronglyConnected = forest.SCC();
-        for (unsigned i = 0; i < stronglyConnected.size(); i++) {
+        /*for (unsigned i = 0; i < stronglyConnected.size(); i++) {
             if(stronglyConnected[i].size() <= 1){
                 continue;
             }
@@ -55,6 +55,17 @@ int main(){
                 cout << stronglyConnected[i][j] << " ";
             }
             cout << "\n";
+        }*/
+        scc_number = 0;
+        for (unsigned i = 0; i < stronglyConnected.size(); i++) {
+            if(stronglyConnected[i].size() <= 1){
+                continue;
+            }
+            outfile << "Strongly connected components " << ++scc_number << ": ";
+            for (unsigned j = 0; j < stronglyConnected[i].size(); j++) {
+                outfile << stronglyConnected[i][j] << " ";
+            }
+            outfile << "\n";
         }
     }
 
@@ -63,6 +74,7 @@ int main(){
     std::cin>> bfs;
     if(bfs == "yes") {
         unsigned long _totalnumfiltered = forest.BFS();
-        cout << "After filtering, total number of products now is: " << _totalnumfiltered << endl;
+        //cout << "After filtering from " << forest.get_itemsMap().size() << " items, " << "total number of products now is: " << _totalnumfiltered << endl;
+        outfile << "After filtering from " << forest.get_itemsMap().size() << " items, " << "total number of products now is: " << _totalnumfiltered << endl;
     }
 }
