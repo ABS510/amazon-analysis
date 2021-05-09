@@ -44,9 +44,11 @@ Whenever we surf in Amazon, Amazon always tempts us to purchase related products
   </a>
 </p>
 We were curious about three things, which we tried to find out by project:
-1. What are the top-N items that render the most number of related purchases (IDDFS or Depth Limited Search)?
-2. Among the top-N products from step 1, what are the products that would be most profitable to promote on (Tarjan's Algorithm)?
-3. After filtering top-N products from the raw dataset, what are the total number of products we are left with? (Breadth First Search) 
+<ol>
+  <li> What are the top-N items that render the most number of related purchases (IDDFS or Depth Limited Search)? </li>
+  <li> Among the top-N products from step 1, what are the products that would be most profitable to promote on (Tarjan's Algorithm)? </li>
+  <li> After filtering top-N products from the raw dataset, what are the total number of products we are left with? (Breadth First Search) </li>
+</ol>
 
 
 ## Getting Started
