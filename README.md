@@ -7,7 +7,7 @@
     <a href=#project-goal>Project Goal</a>
   </li>
   <li>
-    <a href=#Execution>Execution</a>
+    <a href=#getting-started>Getting Started</a>
   </li>
   <li>
     <a href=#Location> Data Location</a>
@@ -17,7 +17,27 @@
 ## Project Goal
 asd
 
-## Execution
+## Getting Started
+You can follow few easy steps to execute our project.
+
+### Prerequisites
+To begin with, you will have to load llvm on EWS environment.
+
+```sh
+module load llvm
+```
+
+
+### Installation
+
+Clone this repository
+```sh
+git clone https://github-dev.cs.illinois.edu/cs225-sp21/soonhah2-sxlai2-tkim139-abs7.git
+```
+Because our execution file is located inside /Forest, cd into it. For more information on our directory structure, please refer to <a href=#Location>Location of Code, Data, and Results</a>
+```sh
+cd Forest
+```
 
 #### Executing testcases
 
