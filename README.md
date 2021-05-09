@@ -22,14 +22,10 @@ You can follow few easy steps to execute our project.
 
 ### Prerequisites
 To begin with, you will have to load llvm on EWS environment.
-
 ```sh
 module load llvm
 ```
-
-
 ### Installation
-
 Clone this repository
 ```sh
 git clone https://github-dev.cs.illinois.edu/cs225-sp21/soonhah2-sxlai2-tkim139-abs7.git
@@ -38,12 +34,28 @@ Because our execution file is located inside /Forest, cd into it. For more infor
 ```sh
 cd Forest
 ```
+### Execution
+run main.cpp file to execute our project
+```sh
+make
+./main
+```
+Following output will show on terminal. Input at your own variable and see different results according to the different inputs!</br>
+For example,
+```
+Enter limit for IDDFS (less than or equal to 4): 2
+Enter input file: ../Amazon6061.txt
+Enter ranking N: 100
+Do you want to execute Tarjan's algorithm? (yes or no): yes
+Do you want to execute BFS? (yes or no): no
+```
+Doing so will output results for IDDFS and Tarjan's Algorithm but not BFS.
 
 #### Executing testcases
 
 
 ## Location of Code, Data, and Results
-All our code, test suite and results are in the Forest directory. Our code is in the files "Forest.h", "Forest.cpp" and "main.cpp". Our test suite is in the Tests directory. Our results will be outputted into the "result_midpoint.txt" file (in the results directory). Our dataset is in the general directory - "Amazon0601.txt". 
+All our code, test suite and results are in the Forest directory. Our code is in the files "Forest.h", "Forest.cpp" and "main.cpp". Our test suite is in the Tests directory. Our results will be outputted into the "result_midpoint.txt" file (in the results directory). Our dataset is in the general directory - "Amazon0601.txt", while we have self made test cases from sample_testcase1.txt to sample_testcase4.txt in directory called /tests. In the /tests directory, you can also see the visualization of the sample input.
 ```
 ├── Forest
 │   ├── Forest
