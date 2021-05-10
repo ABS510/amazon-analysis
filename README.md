@@ -1,4 +1,7 @@
 # CS 225 Final Project - TEAM MIK
+
+## <a href=https://drive.google.com/file/d/1SoMRuLDRyCz9MPvzV8PpQVfQ6b0XixZN/view> Video Presentation </a>
+
 ### Team Members
 - Soonha Hwang (soonhah2)
 - Shu Xian Lai (sxlai2)
