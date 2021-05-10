@@ -65,10 +65,10 @@ Inside the Forest directory, run main.cpp file to execute our project
 make
 ./main
 ```
-Following output will show on terminal. Input at your own variable and see different results according to the different inputs! Note that all output is stored into a txt file in the results directory and our code assumes all user inputs are strictly legal according to this README.</br>
+Following output will show on terminal. Input at your own variable and see different results according to the different inputs! Note that all output is stored into a txt file in the results directory and our code assumes all user inputs are strictly legal according to this README and the prompts.</br>
 For example,
 ```
-Enter limit for IDDFS (less than or equal to 4): 2
+Enter limit for IDDFS (less than or equal to 3): 2
 Enter input file: ../Amazon6061.txt
 Enter ranking N: 100
 Do you want to execute Tarjan's algorithm? (yes or no): yes
