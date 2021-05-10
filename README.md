@@ -1,5 +1,9 @@
 # CS 225 Final Project - TEAM MIK
-## Team Members: Soonha Hwang, Shu Xian Lai, Tyler Kim, Akshay Sivaraman
+### Team Members
+- Soonha Hwang (soonhah2)
+- Shu Xian Lai (sxlai2)
+- Tyler Kim (tkim139)
+- Akshay Sivaraman (abs7)
 
 ## Table of Contents</br>
 <ol>
@@ -32,16 +36,19 @@
 </ol>
   
 ## Project Goal
-Whenever we surf in Amazon, Amazon always tempts us to purchase related products. When I buy shampoo, they would suggest soap and shower towel. When I buy calculator, they would suggest pen and pencil. The following image shows bunch of Amazon suggestions when I searched "monitor"
+Whenever we surf in Amazon, Amazon always tempts us to purchase related products. For example, when I try to buy a shampoo, Amazon would show soaps and shower towels. When I try to buy a calculator, Amazon would suggest pens and pencils. The following image demonstrates Amazon's suggestions system when I searched for a monitor.
+
 <p align="center">
   <a href="../readme/assets/am_example.PNG">
     <img src="../readme/assets/am_example.PNG" alt="amazon" width= 60%, height = 50%>
   </a>
 </p>
 We were curious about three things, which we tried to find out by project:
-1. What are the top-N items that render the most number of related purchases (IDDFS, Depth Limited Search)?
-2. Among the top-N products from step 1, what are the products that would be most profitable to promote on (Tarjan's Algorithm)?
-3. After filtering top-N products from the raw dataset, what are the total number of products we are left with? (Breadth First Search) 
+<ol>
+  <li> What are the top-N items that render the most number of related purchases (IDDFS or Depth Limited Search)? </li>
+  <li> Among the top-N products from step 1, what are the products that would be most profitable to promote on (Tarjan's Algorithm)? </li>
+  <li> After filtering top-N products from the raw dataset, what are the total number of products we are left with? (Breadth First Search) </li>
+</ol>
 
 
 ## Getting Started
@@ -57,18 +64,18 @@ To begin with, you will have to load llvm on EWS environment with `module load l
    ```
 2. Locate in correct directory. For more information on our directory structure, please refer to <a href=#Location>Location of Code, Data, and Results</a>
    ```sh
-   cd Forest
+   cd soonhah2-sxlai2-tkim139-abs7/Forest
    ```
 ### Execution
-Inside the Forest directory, run main.cpp file to execute our project
+Inside the Forest directory, run make to compile the project. Execute `main` to run the project. 
 ```sh
 make
 ./main
 ```
-Following output will show on terminal. Input at your own variable and see different results according to the different inputs! Note that all output is stored into a txt file in the results directory and our code assumes all user inputs are strictly legal according to this README and the prompts.</br>
+Following output will show on terminal. Input your own variables and see different results according to the different inputs!</br>
 For example,
 ```
-Enter limit for IDDFS (less than or equal to 3): 2
+Enter limit for IDDFS (less than or equal to 4): 2
 Enter input file: ../Amazon6061.txt
 Enter ranking N: 100
 Do you want to execute Tarjan's algorithm? (yes or no): yes
@@ -107,3 +114,6 @@ All our code, test suite and results are in the Forest directory. Our code is in
 ├── Final Project Proposal.md
 └── Team_Contract.md
 ```
+
+## Acknowledgement
+Special thanks to Rishabh for being our good TA!
