@@ -77,4 +77,6 @@ int main(){
         //cout << "After filtering from " << forest.get_itemsMap().size() << " items, " << "total number of products now is: " << _totalnumfiltered << endl;
         outfile << "After filtering from " << forest.get_itemsMap().size() << " items, " << "total number of products now is: " << _totalnumfiltered << endl;
     }
+    outfile << "\n";
+    outfile << "Your inputs were: limit: " << limit << " and ranking : " << top << " with file path " << file << "\n"; 
 }
