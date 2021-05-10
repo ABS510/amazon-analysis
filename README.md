@@ -65,7 +65,7 @@ Inside the Forest directory, run main.cpp file to execute our project
 make
 ./main
 ```
-Following output will show on terminal. Input at your own variable and see different results according to the different inputs!</br>
+Following output will show on terminal. Input at your own variable and see different results according to the different inputs! Note that all output is stored into a txt file in the results directory and our code assumes all user inputs are strictly legal according to this README.</br>
 For example,
 ```
 Enter limit for IDDFS (less than or equal to 4): 2
