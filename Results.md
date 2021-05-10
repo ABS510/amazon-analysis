@@ -1,7 +1,7 @@
 # General Description 
 The final deliverables of our project is all written into result_midpoint.txt file in Forest->Results Directory.
 
-If both IDDFS and Tarjan's algorithms and BFS are executed, the output file will have three main parts, which correspond to the algorithms and traversals respectively.
+If both IDDFS and Tarjan's algorithms and BFS are executed, the output file will have three main parts, which correspond to the algorithms and traversals respectively. We also included one extra line at the very end that shows user input for convenience purposes.
 
 1. The first part will consist of N lines (depending on the input for ranking N). Each of these N lines represent the items with highest copurchasing index (sorted with non-increasing order). 
 
