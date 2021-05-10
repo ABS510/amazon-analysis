@@ -33,14 +33,17 @@
   <li>
     <a href=#location-of-code-data-and-results> Location of Code, Data, and Results</a>
   </li>
+  <li>
+    <a href=#extra-documents> Extra Documents</a>
+  </li>
 </ol>
   
 ## Project Goal
 Whenever we surf in Amazon, Amazon always tempts us to purchase related products. For example, when I try to buy a shampoo, Amazon would show soaps and shower towels. When I try to buy a calculator, Amazon would suggest pens and pencils. The following image demonstrates Amazon's suggestions system when I searched for a monitor.
 
 <p align="center">
-  <a href="../readme/assets/am_example.PNG">
-    <img src="../readme/assets/am_example.PNG" alt="amazon" width= 60%, height = 50%>
+  <a href="../master/assets/am_example.PNG">
+    <img src="../master/assets/am_example.PNG" alt="amazon" width= 60%, height = 50%>
   </a>
 </p>
 We were curious about three things, which we tried to find out by project:
@@ -115,6 +118,23 @@ All our code, test suite and results are in the Forest directory. Our code is in
 ├── Final Project Proposal.md
 └── Team_Contract.md
 ```
+
+## Extra Documents
+Click to see our extra documents:
+<ul>
+  <li>
+    <a href="/Team_Contract.md">Team Contract</a>
+  </li>
+  <li>
+    <a href="/Final%20Project%20Proposal.md">Project Proposal</a>
+  </li>
+  <li>
+    <a href="/Amazon0601.txt">Dataset Used</a>
+  </li>
+  <li>
+    <a href="/Results.md">Results</a>
+  </li>
+</ul>
 
 ## Acknowledgement
 Special thanks to Rishabh for being our good TA!
