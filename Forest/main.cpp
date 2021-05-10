@@ -6,7 +6,7 @@
 
 int main(){
     int limit;
-    std::cout << "Enter limit for IDDFS (less than or equal to 4): " << std::endl;
+    std::cout << "Enter limit for IDDFS (less than or equal to 3): " << std::endl;
     std::cin >> limit;
     Forest forest = Forest(limit);
     std::cout<<"Forest initialized!"<<std::endl;
@@ -18,7 +18,7 @@ int main(){
     std::cout<<"File read!"<<std::endl;
     
     int top;
-    std::cout<<"Enter ranking N: "<<std::endl;
+    std::cout<<"Enter ranking N (recommended value: 100 to 300): "<<std::endl;
     std::cin >> top;
     forest.filter(top);
     std::cout<<"Filter applied!"<<std::endl;
