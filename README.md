@@ -83,7 +83,15 @@ Note that all output is stored into a txt file in the results directory and our 
 For example,
 ```
 Enter limit for IDDFS (less than or equal to 3): 2
-Enter input file: ../Amazon6061.txt
+From the following input files
+----------------------
+1- SNAP Amazon Dataset 
+2- sample testfile 1 
+3- sample testfile 2 
+4- sample testfile 3 
+5- sample testfile 4
+----------------------
+Choose input file: 1
 Enter ranking N: 100
 Do you want to execute Tarjan's algorithm? (yes or no): yes
 Do you want to execute BFS? (yes or no): no
