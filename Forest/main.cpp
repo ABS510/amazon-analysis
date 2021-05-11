@@ -11,12 +11,15 @@ int main(){
     Forest forest = Forest(limit);
     std::cout<<"Forest initialized!"<<std::endl;
 
-    std::cout<<"Choose input file: "<<std::endl;
+    std::cout<<"From the following input files\n---------------------- "<<std::endl;
     std::cout<<"1- SNAP Amazon Dataset "<<std::endl;
     std::cout<<"2- sample testfile 1 "<<std::endl;
     std::cout<<"3- sample testfile 2 "<<std::endl;
     std::cout<<"4- sample testfile 3 "<<std::endl;
     std::cout<<"5- sample testfile 4 "<<std::endl;
+    std::cout<<"---------------------- "<<std::endl;
+    
+    std::cout<<"Choose input file: ";
     std::string file;
     int i;
     std::cin>>i;
