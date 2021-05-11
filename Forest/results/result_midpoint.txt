@@ -1,3 +1,4 @@
+**RESULTS FOR TOP-N PRODUCTS WITH LARGEST COP INDEX**
 Product Rank 1) 258046	with COP Index : 688
 Product Rank 2) 211890	with COP Index : 682
 Product Rank 3) 143958	with COP Index : 679
@@ -98,6 +99,8 @@ Product Rank 97) 333074	with COP Index : 588
 Product Rank 98) 156872	with COP Index : 588
 Product Rank 99) 101984	with COP Index : 588
 Product Rank 100) 262519	with COP Index : 587
+
+**RESULTS FOR GROUP OF STRONGLY CONNECTED COMPONENTS**
 Strongly connected components 1: 143958 127584 
 Strongly connected components 2: 101984 61859 74009 
 Strongly connected components 3: 182392 86548 45962 83744 
