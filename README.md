@@ -68,7 +68,7 @@ To begin with, you will have to load llvm on EWS environment with `module load l
    ```sh
    git clone https://github-dev.cs.illinois.edu/cs225-sp21/soonhah2-sxlai2-tkim139-abs7.git
    ```
-2. Locate in correct directory. For more information on our directory structure, please refer to <a href=#Location>Location of Code, Data, and Results</a>
+2. Locate in correct directory. For more information on our directory structure, please refer to <a href=#location-of-code-data-and-results>Location of Code, Data, and Results</a>
    ```sh
    cd soonhah2-sxlai2-tkim139-abs7/Forest
    ```
@@ -83,7 +83,15 @@ Note that all output is stored into a txt file in the results directory and our 
 For example,
 ```
 Enter limit for IDDFS (less than or equal to 3): 2
-Enter input file: ../Amazon6061.txt
+From the following input files
+----------------------
+1- SNAP Amazon Dataset 
+2- sample testfile 1 
+3- sample testfile 2 
+4- sample testfile 3 
+5- sample testfile 4
+----------------------
+Choose input file: 1
 Enter ranking N: 100
 Do you want to execute Tarjan's algorithm? (yes or no): yes
 Do you want to execute BFS? (yes or no): no

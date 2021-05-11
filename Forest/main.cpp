@@ -11,15 +11,36 @@ int main(){
     Forest forest = Forest(limit);
     std::cout<<"Forest initialized!"<<std::endl;
 
-    std::cout<<"Enter input file: "<<std::endl;
+    std::cout<<"From the following input files\n---------------------- "<<std::endl;
+    std::cout<<"1- SNAP Amazon Dataset "<<std::endl;
+    std::cout<<"2- sample testfile 1 "<<std::endl;
+    std::cout<<"3- sample testfile 2 "<<std::endl;
+    std::cout<<"4- sample testfile 3 "<<std::endl;
+    std::cout<<"5- sample testfile 4 "<<std::endl;
+    std::cout<<"---------------------- "<<std::endl;
+    
+    std::cout<<"Choose input file: ";
     std::string file;
-    std::cin >> file; 
+    int i;
+    std::cin>>i;
+    if(i == 1) file = "../Amazon0601.txt";
+    else if(i == 2) file = "tests/sample_testcase1.txt";
+    else if(i == 3) file = "tests/sample_testcase2.txt";
+    else if(i == 4) file = "tests/sample_testcase3.txt";
+    else if(i == 5) file = "tests/sample_testcase4.txt";
+    else {
+        std::cout<<"OUT OF RANGE!!\nSelecting default file : SNAP AMAZON DATASET";
+        file = "../Amazon0601.txt";
+    }
+    
     forest.readFromFile(file);
     std::cout<<"File read!"<<std::endl;
+
     
     int top;
     std::cout<<"Enter ranking N (recommended value: 100 to 300): "<<std::endl;
     std::cin >> top;
+    std::cout<<"filtering....this may take some time...."<<std::endl;
     forest.filter(top);
     std::cout<<"Filter applied!"<<std::endl;
     
@@ -35,6 +56,7 @@ int main(){
     //std::cout<<"Saving the Ranking ... "<<std::endl;
     std::ofstream outfile("results/result_midpoint.txt");
     cnt = 0;
+    outfile<<"**RESULTS FOR TOP-N PRODUCTS WITH LARGEST COP INDEX**"<<std::endl;
     for(auto itr : top_product){
         outfile<<"Product Rank "<<++cnt<<") " << itr<<"\twith COP Index : "<<forest.get_itemsMap()[itr]->_copIndex<<"\n";
     }
@@ -57,6 +79,7 @@ int main(){
             cout << "\n";
         }*/
         scc_number = 0;
+        outfile<<"\n**RESULTS FOR GROUP OF STRONGLY CONNECTED COMPONENTS**"<<std::endl;
         for (unsigned i = 0; i < stronglyConnected.size(); i++) {
             if(stronglyConnected[i].size() <= 1){
                 continue;
@@ -78,5 +101,9 @@ int main(){
         outfile << "After filtering from " << forest.get_itemsMap().size() << " items, " << "total number of products now is: " << _totalnumfiltered << endl;
     }
     outfile << "\n";
-    outfile << "Your inputs were: limit: " << limit << " and ranking : " << top << " with file path " << file << "\n"; 
+    outfile << "Your inputs were: limit: " << limit << " and ranking : " << top << " with file path " << file << "\n";
+
+    std::cout<<"File successfully written at /results/result_midpoint.txt"<<std::endl;
+
+
 }
