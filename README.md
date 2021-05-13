@@ -70,7 +70,7 @@ To begin with, you will have to load llvm on EWS environment with `module load l
    ```
 2. Locate in correct directory. For more information on our directory structure, please refer to <a href=#location-of-code-data-and-results>Location of Code, Data, and Results</a>
    ```sh
-   cd soonhah2-sxlai2-tkim139-abs7/Forest
+   cd /Forest
    ```
 ### Execution
 Inside the Forest directory, run make to compile the project. Execute `main` to run the project. 
